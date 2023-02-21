@@ -1,0 +1,87 @@
+%!TEX program = xelatex
+\documentclass[11pt, a4paper]{report}
+\usepackage[legalpaper, a4paper, margin=2.5cm]{geometry}
+\usepackage{csquotes}
+\usepackage[french]{babel}
+\usepackage{hyperref}
+\usepackage{libs/utbmcovers}
+\usepackage{lipsum}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{pifont}
+\usepackage[style=alphabetic, sorting=nty]{biblatex}
+\usepackage{minted}
+\usepackage{caption}
+\usepackage{soul}
+\usepackage{subcaption}
+
+%----------------------------------------
+% Use Tahoma as base font
+%----------------------------------------
+
+\chapterfont{\tahomafont\fontseries{b}\fontsize{28pt}{36pt}}
+\sectionfont{\tahomafont\fontseries{b}\fontsize{24pt}{28pt}}
+\subsectionfont{\tahomafont\fontseries{b}\fontsize{20pt}{22pt}}
+\subsubsectionfont{\tahomafont\fontseries{b}\fontsize{20pt}{22pt}}
+
+
+%----------------------------------------
+% UTBM covers configuration
+%----------------------------------------
+
+\setutbmfrontillustration{assets/img/rapport_premiere_couverture}
+\setutbmtitle{Ontologie et base de données pour le projet Techn’hom Time
+Machine}
+\setutbmsubtitle{Rapport de stage ST42 - A2022}
+\setutbmstudent{ECHARD Noé}
+\setutbmstudentdepartment{Département Informatique}
+\setutbmstudentpathway{}
+\setutbmcompany{UTBM}
+\setutbmcompanyaddress{4 rue Thierry Mieg\\90 000 Belfort}
+\setutbmcompanywebsite{www.utbm.fr}
+\setutbmcompanylogo{assets/logo/Logo_TTM}
+\setutbmcompanytutor{Marina Gasnier}
+\setutbmschooltutor{Franck Gechter}
+\setutbmkeywords{
+	12 Industrie textile — 07 Informatique — 13 Recherche — 06 Base de données — 04.Logiciel de gestion — Ontologies
+}
+\setutbmabstract{ Le stage s'est déroulé de Septembre 2022 à Février 2023. Au cours de ce stage, j'ai travaillé sur la création et la gestion d'une ontologie, en utilisant des outils tels que Protégé et RDF. J'ai également acquis une solide compréhension des concepts fondamentaux des vocabulaires ouverts liés. J'ai aussi développé une application sur Unity 3D permettant de modéliser des flux via l'API d'Omeka-S, un logiciel de stockage de données utilisant les ontologies.}
+
+%----------------------------------------
+% Document
+%----------------------------------------
+
+\titlespacing{\chapter}{0pt}{*0}{*5}
+\titleformat{\chapter}[hang]{\bf\huge\tahomafont}{\thechapter}{2pc}{}
+\onehalfspacing
+\addbibresource{src/bibliographie.bib}
+\usemintedstyle{tango}
+\newcommand{\Note}[1]{\textbf{Note :} #1}
+
+\begin{document}
+	\tahomafont
+
+	\makeutbmfrontcover{}
+
+	% Your report content here
+	\input{src/partie0/copyrights}
+	\input{src/partie0/remerciements}
+	\tableofcontents
+	\listoffigures
+    \newpage
+    \input{src/partie1/intro.tex}
+    \input{src/partie1/environnement.tex}
+    \input{src/partie2.tex}
+    \input{src/partie3/TTM.tex}
+    \input{src/conclusion.tex}
+    
+    \nocite{*}
+    \printbibliography
+    \input{src/annexes}
+        
+	\makeutbmbackcover{}
+\end{document}
